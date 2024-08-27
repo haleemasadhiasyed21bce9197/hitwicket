@@ -1,0 +1,21 @@
+import org.json.JSONObject;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+public class QuestEngine {
+    private int cubeSpeed;
+    private int plateTimerMin;
+    private int plateTimerMax;
+
+    public QuestEngine() {
+        try {
+            String content = new String(Files.readAllBytes(Paths.get()));
+            JSONObject json = new JSONObject(content);
+            cubeSpeed = json.getInt("cubeSpeed");
+            plateTimerMin = json.getInt("plateTimerMin");
+            plateTimerMax = json.getInt("plateTimerMax");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
